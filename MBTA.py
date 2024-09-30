@@ -3,16 +3,16 @@ from TrainTypes import Station
 
 def main():
 
-    Alewife = Station("Alewife", "Red Line")
-    Davis = Station("Davis", "Subway")
+    Alewife = Station("Alewife", "Subway", "Red Line")
+    Davis = Station("Davis", "Subway", "Red Line")
     West_Service_Rd_Lake_St = Station("West Service Rd @ Lake St", "Bus")
     Mass_Route_16 = Station("Massachusetts Ave @ Rt 16", "Bus")
     Grove_St_Highland = Station("Grove St @ Highland Ave", "Bus")
     Holland_St_Simpson = Station("Holland St @ Simpson Ave", "Bus")
     College_Ave_Francesca = Station("College Ave @ Francesca Ave", "Bus")
-    Porter = Station("Porter", "Red Line")
-    Central = Station("Central", "Red Line")
-    Harvard = Station("Harvard", "Red Line")
+    Porter = Station("Porter", "Subway", "Red Line")
+    Central = Station("Central", "Subway", "Red Line")
+    Harvard = Station("Harvard", "Subway", "Red Line")
     West_Service_Venner = Station("West Service Rd @ Venner Rd", "Bus")
     Pleasant_Opp_Brunswick = Station("West Service Rd @ Venner Rd", "Bus")
 
