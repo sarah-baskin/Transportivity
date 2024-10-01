@@ -1,14 +1,17 @@
 class Subway:
 
-    def __init__(self, name, stations):
+    def __init__(self, name):
         self.name = name
-        self.stations = stations
         self.price = 2.40
 
+class Bus:
+
+    def __init__(self, name):
+        self.name = name
+        self.price = 1.70
 class Station:
 
-    def __init__(self, name, type, line):
+    def __init__(self, name, type):
         self.name = name
         self.type = type
-        self.line = line
         

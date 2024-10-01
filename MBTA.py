@@ -3,41 +3,77 @@ from TrainTypes import Station
 
 def main():
 
-    Alewife = Station("Alewife", "Subway", "Red Line")
-    Davis = Station("Davis", "Subway", "Red Line")
-    West_Service_Rd_Lake_St = Station("West Service Rd @ Lake St", "Bus")
-    Mass_Route_16 = Station("Massachusetts Ave @ Rt 16", "Bus")
-    Grove_St_Highland = Station("Grove St @ Highland Ave", "Bus")
-    Holland_St_Simpson = Station("Holland St @ Simpson Ave", "Bus")
-    College_Ave_Francesca = Station("College Ave @ Francesca Ave", "Bus")
-    Porter = Station("Porter", "Subway", "Red Line")
-    Central = Station("Central", "Subway", "Red Line")
-    Harvard = Station("Harvard", "Subway", "Red Line")
-    West_Service_Venner = Station("West Service Rd @ Venner Rd", "Bus")
-    Pleasant_Opp_Brunswick = Station("West Service Rd @ Venner Rd", "Bus")
+    Alewife = Station("Alewife", "Subway and Bus")
+    Davis = Station("Davis", "Subway and Bus")
+    Davis_Red = Subway("Davis")
+    Porter = Station("Porter", "Subway and Bus")
+    Porter_Red = Subway("Porter")
+    Harvard_Red = Subway("Harvard")
+    Central = Station("Central", "Subway and Bus")
+    Harvard = Station("Harvard", "Subway and Bus")
+    Kendall_MIT = Station("Kendall/MIT", "Subway and Bus")
+    Charles_MGH = Station("Charles/MGH", "Subway")
+    Park_Street = Station("Park_Street", "Subway and Bus")
+    Downtown_Crossing = Station("Downtown Crossing", "Subway and Bus")
+    South_Station = Station("South Station", "Subway and Bus")
+    Broadway = Station("Broadway", "Subway and Bus")
+    Andrew = Station("Andrew", "Subway and Bus")
+    JFK_UMass = Station("JFK/UMass", "Subway and Bus")
+    
+    Government_Center = Station("Government Center", "Subway and Bus")
+    Boylston = Station("Boylston", "Subway and Bus")
 
-    station_graph = {Alewife : [Davis],
-                     Davis : [Porter],
-                     Porter : [Harvard],
-                     Harvard: [Central],
-                     Central : []
+    station_list = [Alewife, Davis, Porter, Harvard]
+
+    station_graph = {Alewife : [Davis_Red],
+                     Davis : [Porter_Red],
+                     Porter : [Harvard_Red],
+                     Harvard : []
+                    #  Harvard: [Central],
+                    #  Central : [Kendall_MIT],
+                    #  Kendall_MIT : [Charles_MGH],
+                    #  Charles_MGH : [Park_Street],
+                    #  Park_Street : [Downtown_Crossing],
+                    #  Downtown_Crossing : [South_Station],
+                    #  South_Station : [Broadway],
+                    #  Broadway : [Andrew],
+                    #  Andrew : [JFK_UMass],
+                    #  JFK_UMass : []
                      }
     
-    ride_map(station_graph, Alewife, Harvard, [])
+    ride_map(station_graph, station_list, Alewife, Harvard, [])
     
 
-def ride_map(graph, start, end, path):
-    path = path + [start]
-    if start == end:
-        for path in path:
-            print(path.name)
-        return path
-    if not start in graph.keys():
-        return None
-    for node in graph[start]:
-        if node not in path:
-            newpath = ride_map(graph, node, end, path)
-            if newpath: return newpath
+def ride_map(stat_graph, stat_list, start, end, path):
+
+    explored = []
+
+    queue = [[start]]
+
+    if start.name == end.name:
+        print("You are already at your intended destination.")
+        return queue
+    
+    while queue:
+        path = queue.pop(0)
+        node = path[-1]
+
+        if node not in explored:
+            if type(node) != Station:
+                for station in stat_list:
+                    if station.name == node.name:
+                        node = station
+            neighbors = stat_graph[node]
+            for neighbor in neighbors:
+                new_path = list(path)
+                new_path.append(neighbor)
+                queue.append(new_path)
+
+                if neighbor.name == end.name:
+                    for station in new_path:
+                        print(station.name)
+                    return new_path
+            explored.append(node)
     
     return None
 
