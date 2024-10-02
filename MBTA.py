@@ -83,7 +83,7 @@ def main():
                      Boylston : []
                      }
     
-    ride_map(station_graph, station_list, Alewife, Braintree, [])
+    ride_map(station_graph, station_list, Alewife, Ashmont, [])
     
 
 def ride_map(stat_graph, stat_list, start, end, path):
@@ -107,7 +107,8 @@ def ride_map(stat_graph, stat_list, start, end, path):
             
             if type(node) != Station:
                 curr_route = node.route
-                line_list.append((curr_route, i))
+                curr_name = node.name
+                line_list.append((curr_name, curr_route, i))
                 for station in stat_list:
                     if station.name == node.name:
                         node = station
@@ -119,16 +120,22 @@ def ride_map(stat_graph, stat_list, start, end, path):
                 queue.append(new_path)
 
                 if neighbor.name == end.name:
-                    line_list.append((neighbor.route, i))
-                    route = line_list[0][0]
+
+                    names_path = []
+                    for stop in new_path:
+                        names_path.append(stop.name)
+                    line_list.append((neighbor.name, neighbor.route, i))
+                    route = line_list[0][1]
                     print(">>", route)
+
                     i = 1
                     for station in new_path:
                         print(station.name)
                         if i < len(line_list):
-                            if line_list[i][0] != route:
-                                print(">>", line_list[i][0])
-                                route = line_list[i][0]
+                            if line_list[i][0] in names_path:
+                                if line_list[i][1] != route:
+                                    print(">>", line_list[i][1])
+                                    route = line_list[i][1]
                         i += 1
                     return new_path
             explored.append(node)
