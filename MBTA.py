@@ -35,14 +35,14 @@ def main():
     Park_Street_Green = Subway("Park Street", "Green Line")
     Boylston_Green = Subway("Boylston", "Green Line")
 
-    station_list = [Alewife, Davis, Porter, Harvard, Central, Charles_MGH, Park_Street, Downtown_Crossing,
+    station_list = [Alewife, Davis, Porter, Harvard, Central, Kendall_MIT, Charles_MGH, Park_Street, Downtown_Crossing,
                     South_Station, Broadway, Andrew, JFK_UMass, Government_Center, Boylston]
 
     station_graph = {Alewife : [Davis_Red],
                      Davis : [Porter_Red],
                      Porter : [Harvard_Red],
                      Harvard : [Central_Red],
-                     Central : [Kendall_MIT],
+                     Central : [Kendall_Red],
                      Kendall_MIT : [Charles_Red],
                      Charles_MGH : [Park_Street_Red],
                      Park_Street : [Downtown_Red, Boylston_Green],
@@ -55,7 +55,7 @@ def main():
                      Boylston : []
                      }
     
-    ride_map(station_graph, station_list, Government_Center, South_Station, [])
+    ride_map(station_graph, station_list, Government_Center, Boylston, [])
     
 
 def ride_map(stat_graph, stat_list, start, end, path):
@@ -76,12 +76,14 @@ def ride_map(stat_graph, stat_list, start, end, path):
         node = path[-1]
 
         if node not in explored:
+            
             if type(node) != Station:
-                line_list.append((node.route, i))
-                i += 1
+                curr_route = node.route
+                line_list.append((curr_route, i))
                 for station in stat_list:
                     if station.name == node.name:
                         node = station
+                i += 1
             neighbors = stat_graph[node]
             for neighbor in neighbors:
                 new_path = list(path)
@@ -89,14 +91,17 @@ def ride_map(stat_graph, stat_list, start, end, path):
                 queue.append(new_path)
 
                 if neighbor.name == end.name:
+                    line_list.append((neighbor.route, i))
                     route = line_list[0][0]
                     print(">>", route)
-                    j = 1
+                    i = 1
                     for station in new_path:
                         print(station.name)
-                        if line_list[j][0] != route:
-                            print(">>", line_list[j][0])
-                            route = line_list[j][0]
+                        if i < len(line_list):
+                            if line_list[i][0] != route:
+                                print(">>", line_list[i][0])
+                                route = line_list[i][0]
+                        i += 1
                     return new_path
             explored.append(node)
     
