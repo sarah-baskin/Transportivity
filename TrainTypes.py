@@ -1,7 +1,8 @@
 class Subway:
 
-    def __init__(self, name):
+    def __init__(self, name, route):
         self.name = name
+        self.route = route
         self.price = 2.40
 
 class Bus:
