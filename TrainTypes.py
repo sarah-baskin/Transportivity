@@ -10,6 +10,7 @@ class Bus:
     def __init__(self, name):
         self.name = name
         self.price = 1.70
+        
 class Station:
 
     def __init__(self, name, type):

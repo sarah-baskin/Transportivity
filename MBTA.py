@@ -18,6 +18,15 @@ def main():
     JFK_UMass = Station("JFK/UMass", "Subway and Bus")
     Government_Center = Station("Government Center", "Subway and Bus")
     Boylston = Station("Boylston", "Subway and Bus")
+    Savin_Hill = Station("Savin Hill", "Subway")
+    Fields_Corner = Station("Fields Corner", "Subway and Bus")
+    Shawmut = Station("Shawmut", "Subway")
+    Ashmont = Station("Ashmont", "Subway and Bus")
+    North_Quincy = Station("North Quincy", "Subway and Bus")
+    Wollaston = Station("Wollaston", "Subway")
+    Quincy_Center = Station("Quincy Center", "Subway and Bus")
+    Quincy_Adams = Station("Quincy Adams", "Subway and Bus")
+    Braintree = Station("Braintree", "Subway and Bus")
 
     Davis_Red = Subway("Davis", "Red Line")
     Porter_Red = Subway("Porter", "Red Line")
@@ -31,12 +40,22 @@ def main():
     Broadway_Red = Subway("Broadway", "Red Line")
     Andrew_Red = Subway("Andrew", "Red Line")
     JFK_Red = Subway("JFK/UMass", "Red Line")
+    Savin_Red = Subway("Savin Hill", "Red Line")
+    Fields_Corner_Red = Subway("Fields Corner", "Red Line")
+    Shawmut_Red = Subway("Shawmut", "Red Line")
+    Ashmont_Red = Subway("Ashmont", "Red Line")
+    North_Quincy_Red = Subway("North Quincy", "Red Line")
+    Wollaston_Red = Subway("Wollaston", "Red Line")
+    Quincy_Center_Red = Subway("Quincy Center", "Red Line")
+    Quincy_Adams_Red = Subway("Quincy Adams", "Red Line")
+    Braintree_Red = Subway("Braintree", "Red Line")
 
     Park_Street_Green = Subway("Park Street", "Green Line")
     Boylston_Green = Subway("Boylston", "Green Line")
 
     station_list = [Alewife, Davis, Porter, Harvard, Central, Kendall_MIT, Charles_MGH, Park_Street, Downtown_Crossing,
-                    South_Station, Broadway, Andrew, JFK_UMass, Government_Center, Boylston]
+                    South_Station, Broadway, Andrew, JFK_UMass, Government_Center, Boylston, Savin_Hill, Fields_Corner, Shawmut,
+                    Ashmont, North_Quincy, Wollaston, Quincy_Center, Quincy_Adams, Braintree]
 
     station_graph = {Alewife : [Davis_Red],
                      Davis : [Porter_Red],
@@ -50,12 +69,21 @@ def main():
                      South_Station : [Broadway_Red],
                      Broadway : [Andrew_Red],
                      Andrew : [JFK_Red],
-                     JFK_UMass : [],
+                     JFK_UMass : [Savin_Red, North_Quincy_Red],
+                     Savin_Hill : [Fields_Corner_Red],
+                     Fields_Corner : [Shawmut_Red],
+                     Shawmut : [Ashmont_Red],
+                     Ashmont : [],
+                     North_Quincy : [Wollaston_Red],
+                     Wollaston : [Quincy_Center_Red],
+                     Quincy_Center : [Quincy_Adams_Red],
+                     Quincy_Adams : [Braintree_Red],
+                     Braintree : [],
                      Government_Center : [Park_Street_Green],
                      Boylston : []
                      }
     
-    ride_map(station_graph, station_list, Government_Center, Boylston, [])
+    ride_map(station_graph, station_list, Alewife, Braintree, [])
     
 
 def ride_map(stat_graph, stat_list, start, end, path):
