@@ -50,8 +50,51 @@ def main():
     Quincy_Adams_Red = Subway("Quincy Adams", "Red Line")
     Braintree_Red = Subway("Braintree", "Red Line")
 
-    Park_Street_Green = Subway("Park Street", "Green Line")
-    Boylston_Green = Subway("Boylston", "Green Line")
+    Park_Street_B = Subway("Park Street", "Green Line -- B")
+    Boylston_B = Subway("Boylston", "Green Line -- B")
+    Arlington_B = Subway("Arlington", "Green Line -- B")
+    Copley_B = Subway("Arlington", "Green Line -- B")
+    Hynes_B = Subway("Hynes Convention Center", "Green Line -- B")
+    Kenmore_B = Subway("Kenmore", "Green Line -- B")
+    Blandford_B = Subway("Blandford Street", "Green Line -- B")
+
+    Park_Street_C = Subway("Park Street", "Green Line -- C")
+    Boylston_C = Subway("Boylston", "Green Line -- C")
+    Arlington_C = Subway("Arlington", "Green Line -- C")
+    Copley_C = Subway("Arlington", "Green Line -- C")
+    Hynes_C = Subway("Hynes Convention Center", "Green Line -- C")
+    Kenmore_C = Subway("Kenmore", "Green Line -- C")
+    Saint_Mary_C = Subway("Saint Mary's Street", "Green Line -- C")
+
+    Union_Square_D = Subway("Union Square", "Green Line -- D")
+    Lechmere_D = Subway("Lechmere", "Green Line -- D")
+    Science_Park_D = Subway("Science Park/West End", "Green Line -- D")
+    North_Station_D = Subway("North Station", "Green Line -- D")
+    Haymarket_D = Subway("Haymarket", "Green Line -- D")
+    Government_Center_D = Subway("Government Center", "Green Line -- D")
+    Park_Street_D = Subway("Park Street", "Green Line -- D")
+    Boylston_D = Subway("Boylston", "Green Line -- D")
+    Arlington_D = Subway("Arlington", "Green Line -- D")
+    Copley_D = Subway("Arlington", "Green Line -- D")
+    Hynes_D = Subway("Hynes Convention Center", "Green Line -- D")
+    Kenmore_D = Subway("Kenmore", "Green Line -- D")
+    Fenway_D = Subway("Fenway", "Green Line -- D")
+
+    Medford_E = Subway("Medford/Tufts", "Green Line -- E")
+    Ball_E = Subway("Ball Square", "Green Line -- E")
+    Magoun_Square_E = Subway("Magoun Square", "Green Line -- E")
+    Gilman_Square_E = Subway("Gilman Square", "Green Line -- E")
+    East_Som_E = Subway("East Somerville", "Green Line -- E")
+    Lechmere_E = Subway("Lechmere", "Green Line -- E")
+    Science_Park_E = Subway("Science Park/West End", "Green Line -- E")
+    North_Station_E = Subway("North Station", "Green Line -- E")
+    Haymarket_E = Subway("Haymarket", "Green Line -- E")
+    Government_Center_E = Subway("Government Center", "Green Line -- E")
+    Park_Street_E = Subway("Park Street", "Green Line -- E")
+    Boylston_E = Subway("Boylston", "Green Line -- E")
+    Arlington_E = Subway("Arlington", "Green Line -- E")
+    Copley_E = Subway("Arlington", "Green Line -- E")
+    Prudential_E = Subway("Prudential", "Green Line -- E")
 
     station_list = [Alewife, Davis, Porter, Harvard, Central, Kendall_MIT, Charles_MGH, Park_Street, Downtown_Crossing,
                     South_Station, Broadway, Andrew, JFK_UMass, Government_Center, Boylston, Savin_Hill, Fields_Corner, Shawmut,
@@ -64,7 +107,7 @@ def main():
                      Central : [Kendall_Red],
                      Kendall_MIT : [Charles_Red],
                      Charles_MGH : [Park_Street_Red],
-                     Park_Street : [Downtown_Red, Boylston_Green],
+                     Park_Street : [Downtown_Red, Boylston_B],
                      Downtown_Crossing : [South_Station_Red],
                      South_Station : [Broadway_Red],
                      Broadway : [Andrew_Red],
@@ -79,7 +122,7 @@ def main():
                      Quincy_Center : [Quincy_Adams_Red],
                      Quincy_Adams : [Braintree_Red],
                      Braintree : [],
-                     Government_Center : [Park_Street_Green],
+                     Government_Center : [Park_Street_B],
                      Boylston : []
                      }
     
